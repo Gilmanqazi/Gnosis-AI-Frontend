@@ -1,0 +1,70 @@
+import axios from "axios"
+
+const api = axios.create({
+  baseURL:import.meta.env.VITE_API_URL,
+  withCredentials:true
+})
+
+export const register = async ({username,email,password})=>{
+  try{
+    const res = await api.post(`/api/auth/register`,{
+      username,email,password
+    })
+    console.log(res.data) // 👈 check this
+    return res.data
+  }catch(err){
+    console.log(err)
+    throw err
+  }
+}
+
+export const login = async ({email, password})=>{
+try{
+const res = await api.post("/api/auth/login",{
+  email,password
+})
+
+console.log(res.data) // 👈 check this
+return res.data
+}catch(err){
+  console.log(err)
+  throw err
+}
+}
+
+
+export const  getMe = async ()=>{
+
+try{
+  const res = await api.get("/api/auth/get-me")
+  console.log(res.data) // 👈 check this
+return res.data
+}  catch(err){
+  console.log(err)
+  throw err
+}
+}
+
+export const verifyEmail = async (token) => {
+  try {
+    // ?token= zaroori hai
+    const res = await api.get(`/api/auth/verify-email?token=${token}`); 
+    console.log(res.data);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+export const resendVerification = async (email)=>{
+
+  try{
+    const res = await api.post("/api/auth/resend-verification-email",{email})
+    console.log(res.data)
+    return res.data
+  }catch(err){
+    console.log(err)
+    throw err
+  }
+}
