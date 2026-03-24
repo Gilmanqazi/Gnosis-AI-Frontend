@@ -4,7 +4,6 @@ import {useSelector ,useDispatch} from 'react-redux'
 import { useChat } from '../hook/useChat'
 import remarkGfm from 'remark-gfm'
 import { setCurrentChatId, setLoading } from '../chat.slice'
-import { deleteChat } from '../service/chat.api'
 
 const ChatUI = () => {
   const chat = useChat()

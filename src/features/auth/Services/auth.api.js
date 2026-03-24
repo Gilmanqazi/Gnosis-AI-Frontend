@@ -11,11 +11,10 @@ export const register = async ({username,email,password})=>{
     const res = await api.post(`/api/auth/register`,{
       username,email,password
     })
-    console.log(res.data) // 👈 check this
     return res.data
   }catch(err){
     console.log(err)
-    throw err
+ throw err
   }
 }
 
@@ -25,7 +24,7 @@ const res = await api.post("/api/auth/login",{
   email,password
 })
 
-console.log(res.data) // 👈 check this
+
 return res.data
 }catch(err){
   console.log(err)
@@ -38,7 +37,6 @@ export const  getMe = async ()=>{
 
 try{
   const res = await api.get("/api/auth/get-me")
-  console.log(res.data) // 👈 check this
 return res.data
 }  catch(err){
   console.log(err)
@@ -50,7 +48,6 @@ export const verifyEmail = async (token) => {
   try {
     // ?token= zaroori hai
     const res = await api.get(`/api/auth/verify-email?token=${token}`); 
-    console.log(res.data);
     return res.data;
   } catch (err) {
     console.log(err);
